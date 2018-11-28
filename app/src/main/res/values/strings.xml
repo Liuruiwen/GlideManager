@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">GlideManager</string>
+
+    <string name="lab">加载普通图片</string>
+    <string name="lab1">加载圆角图片</string>
+    <string name="lab2">加载头像</string>
+    <string name="lab3">加载gif</string>
+    <string name="lab4">监听图片加载</string>
+    <string name="lab5">查看长图</string>
+    <string name="lab6">看小姐姐</string>
+    <string name="lab7">缓存图片大小</string>
+    <string name="lab8">清除缓存</string>
+    <array name="arrat_list">
+        <item>@string/lab</item>
+        <item>@string/lab1</item>
+        <item>@string/lab2</item>
+        <item>@string/lab3</item>
+        <item>@string/lab4</item>
+        <item>@string/lab5</item>
+        <item>@string/lab6</item>
+        <item>@string/lab7</item>
+        <item>@string/lab8</item>
+    </array>
+
+</resources>
