@@ -34,6 +34,7 @@ import shop.ruiwenliu.glidemanager.R;
 public class GlideCache extends AppGlideModule {
     public static final int GLIDE_DISK_SIZE = 1024 * 1024 * 200;
     public static final int GLIDE_MEMORY_SIZE =5 * 1024 * 1024;
+    public static final String GLIDE_DISK_NAME="GlideManagerCache";
 
     @Override
     public boolean isManifestParsingEnabled() {
@@ -45,7 +46,7 @@ public class GlideCache extends AppGlideModule {
     public void applyOptions(Context context, GlideBuilder builder) {
 
         //自定义缓存目录，磁盘缓存给150M 另外一种设置缓存方式
-        builder.setDiskCache(new InternalCacheDiskCacheFactory(context, "GlideManagerCache", GLIDE_DISK_SIZE));
+        builder.setDiskCache(new InternalCacheDiskCacheFactory(context, GLIDE_DISK_NAME, GLIDE_DISK_SIZE));
         builder.setMemoryCache(new LruResourceCache( GLIDE_MEMORY_SIZE));
         //配置图片缓存格式 默认格式为8888
         builder.setDefaultRequestOptions(RequestOptions.formatOf(DecodeFormat.PREFER_ARGB_8888));

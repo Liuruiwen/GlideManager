@@ -1,5 +1,6 @@
 package shop.ruiwenliu.glidemanager;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -37,10 +39,12 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import shop.ruiwenliu.glidemanager.until.glide.GlideApp;
 import shop.ruiwenliu.glidemanager.until.glide.ProgressInterceptor;
 import shop.ruiwenliu.glidemanager.until.glide.ProgressListener;
+import shop.ruiwenliu.glidemanager.until.permission.RxPermission;
 
 public class TestActivity extends AppCompatActivity {
 
@@ -105,7 +109,21 @@ public class TestActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.tv_save:
-                downImage(url);
+                /**
+                 * 6.0以上手机做权限处理
+                 */
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    new RxPermission(TestActivity.this).request(
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE).subscribe(new Consumer<Boolean>() {
+                        @Override
+                        public void accept(Boolean aBoolean) throws Exception {
+                            downImage(url);
+                        }
+                    });
+                } else {
+                    downImage(url);
+                }
+
                 break;
         }
     }

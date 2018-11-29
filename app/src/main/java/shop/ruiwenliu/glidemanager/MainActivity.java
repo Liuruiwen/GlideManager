@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setMessage("加载中");
         mRv = findViewById(R.id.rv);
         mImage = findViewById(R.id.image);
-        tvCache.setText(GlideCacheUtil.getInstance(MainActivity.this).getCacheSize());
         LabAdapter adapter = new LabAdapter();
         mRv.setLayoutManager(new GridLayoutManager(this, 4));
         mRv.setAdapter(adapter);
@@ -88,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
                     case 6:
                        startActivity(CarouselImageActivity.getIntent(MainActivity.this));
                         break;
-                    case 7:
-
+                    case 7://获取缓存大小
+                        tvCache.setText(GlideCacheUtil.getInstance(MainActivity.this).getCacheSize());
                         break;
-                    case 8:
+                    case 8://清除缓存
                         if(GlideCacheUtil.getInstance(MainActivity.this).clearImageDiskCache()){
                             Toast.makeText(MainActivity.this, "清除缓存成功", Toast.LENGTH_SHORT).show();
                         }else

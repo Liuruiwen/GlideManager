@@ -90,7 +90,7 @@ public class GlideCacheUtil {
      */
     public String getCacheSize() {
         try {
-            return getFormatSize(getFolderSize(new File(mContext.getCacheDir() + "/"+ GlideCache.GLIDE_DISK_SIZE)));
+            return getFormatSize(getFolderSize(new File(mContext.getCacheDir() + "/"+ GlideCache.GLIDE_DISK_NAME)));
 //            return getFormatSize(getFolderSize(new File(mContext.getCacheDir() + "/"+ InternalCacheDiskCacheFactory.DEFAULT_DISK_CACHE_DIR)));
         } catch (Exception e) {
             e.printStackTrace();
